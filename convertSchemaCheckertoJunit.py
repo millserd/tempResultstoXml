@@ -1,7 +1,9 @@
 from junit_xml import TestSuite, TestCase
+import sys
 
 # input file name with extension
-file = '..\\..\\build\\checker\\SchemaCheckerResults.txt'
+file = sys.argv[1]
+
 # using try catch except to
 # handle file not found error.
   
