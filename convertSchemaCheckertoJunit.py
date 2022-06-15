@@ -55,7 +55,7 @@ try:
     file_open.close()
     with open('schemaCheckResults.xml', 'w', errors='ignore') as f:
         ts = TestSuite("UCI Schema Checker Test Suite", test_cases)
-        TestSuite.to_file(f, [ts], prettyprint=False)
+        TestSuite.to_file(f, [ts])
 
 except Exception as e:
     print(e)
