@@ -1,7 +1,7 @@
 from junit_xml import TestSuite, TestCase
 
 # input file name with extension
-file = 'C:\\Users\\g80475\\OneDrive - NGC\\Documents\\uci-schema\\build\\checker\\SchemaCheckerResults.txt'
+file = '..\\..\\build\\checker\\SchemaCheckerResults.txt'
 # using try catch except to
 # handle file not found error.
   
