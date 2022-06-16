@@ -33,7 +33,7 @@ try:
             word = line.split(" ")
             try:
                 #test_cases.append(TestCase(name=(word[3] + " " + word[4]), status=word[0], log=line))
-                test_cases.append(TestCase(name=line))
+                test_cases.append(TestCase(name=line), status=pass)
             except:
                 continue
         if result2 in line:
@@ -47,14 +47,14 @@ try:
             word = line.split(" ")
             try:
                 #test_cases.append(TestCase(name=(word[3] + " " + word[4]), status=word[0], log=line))
-                test_cases.append(TestCase(name=line))
+                test_cases.append(TestCase(name=line), status=fail)
             except:
                 continue
         if result4 in line:
             word = line.split(" ")
             try:
                 #test_cases.append(TestCase(name=word[2] + " to " + word[4] + " " + (word[5] + " " + word[6]), status='skipped', log=line))
-                test_cases.append(TestCase(name=line))
+                test_cases.append(TestCase(name=line), status=skipped)
             except:
                 continue
         
