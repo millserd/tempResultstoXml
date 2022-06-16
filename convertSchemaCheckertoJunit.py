@@ -31,32 +31,36 @@ try:
         # line into newly created list 
         if result1 in line:
             word = line.split(" ")
-            try:
-                #test_cases.append(TestCase(name=(word[3] + " " + word[4]), status=word[0], log=line))
-                test_cases.append(TestCase(name=line), status=pass)
-            except:
-                continue
+            if len(word) > 4: # filter out summary section
+                try:
+                    #test_cases.append(TestCase(name=(word[3] + " " + word[4]), status=word[0], log=line))
+                    test_cases.append(TestCase(name=line, status='pass'))
+                except:
+                    continue
         if result2 in line:
-            word = line.split(" ")
-            try:
-                #test_cases.append(TestCase(name=(word[1] + " " + word[2]), status=word[0], log=line))
-                test_cases.append(TestCase(name=line))
-            except:
-                continue
+            if len(word) > 4: # filter out summary section
+                word = line.split(" ")
+                try:
+                    #test_cases.append(TestCase(name=(word[1] + " " + word[2]), status=word[0], log=line))
+                    test_cases.append(TestCase(name=line))
+                except:
+                    continue
         if result3 in line:
             word = line.split(" ")
-            try:
-                #test_cases.append(TestCase(name=(word[3] + " " + word[4]), status=word[0], log=line))
-                test_cases.append(TestCase(name=line), status=fail)
-            except:
-                continue
+            if len(word) > 4: # filter out summary section
+                try:
+                    #test_cases.append(TestCase(name=(word[3] + " " + word[4]), status=word[0], log=line))
+                    test_cases.append(TestCase(name=line, status='fail'))
+                except:
+                    continue
         if result4 in line:
             word = line.split(" ")
-            try:
-                #test_cases.append(TestCase(name=word[2] + " to " + word[4] + " " + (word[5] + " " + word[6]), status='skipped', log=line))
-                test_cases.append(TestCase(name=line), status=skipped)
-            except:
-                continue
+            if len(word) > 4: # filter out summary section
+                try:
+                    #test_cases.append(TestCase(name=word[2] + " to " + word[4] + " " + (word[5] + " " + word[6]), status='skipped', log=line))
+                    test_cases.append(TestCase(name=line, status='skipped'))
+                except:
+                    continue
         
     # closing file after reading
     file_open.close()
