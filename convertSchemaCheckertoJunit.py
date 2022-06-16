@@ -16,7 +16,7 @@ try:
     result4 = "NOT PROCESSED"
 
     # opening and reading the file 
-    file_open = open(str(file), 'r', errors='ignore')
+    file_open = open(file, 'r', errors='ignore')
       
     # asking the user to enter the string to be 
     # searched
@@ -53,11 +53,23 @@ try:
         
     # closing file after reading
     file_open.close()
+    
     with open('schemaCheckResults.xml', 'w', errors='ignore') as f:
-        ts = TestSuite("UCI Schema Checker Test Suite", test_cases)
-        TestSuite.to_file(f, [ts])
+         ts = TestSuite("UCI results", test_cases)
+         TestSuite.to_file(f, [ts])
+
+    f.close()
+
+    # fix bug in library
+    with open("schemaCheckResults.xml") as f:
+        lines = f.readlines()
+
+    lines[1] = "<testsuites>\n"
+
+    with open("schemaCheckResults.xml", "w") as f:
+        f.writelines(lines)
+
 
 except Exception as e:
     print(e)
     print("\nThe schemaCheckerResults file doesn't exist!")
-
