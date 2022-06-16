@@ -18,9 +18,6 @@ try:
     # opening and reading the file 
     file_open = open(file, 'r', errors='ignore')
       
-    # asking the user to enter the string to be 
-    # searched
-     
     # reading file content line by line.
     lines = file_open.readlines()
 
@@ -35,38 +32,38 @@ try:
         if result1 in line:
             word = line.split(" ")
             try:
-                test_cases.append(TestCase(word[3] + " " + word[4], 'UCI Schema', 0, line, word[0]))
+                test_cases.append(TestCase(word[3] + " " + word[4], status=word[1], log=line))
             except:
                 continue
         if result2 in line:
             word = line.split(" ")
             try:
-                test_cases.append(TestCase(word[1] + " " + word[2], 'UCI Schema', 0, line, word[0]))
+                test_cases.append(TestCase(word[1] + " " + word[2], status=word[0], log=line ))
             except:
                 continue
         if result3 in line:
             word = line.split(" ")
             try:
-                test_cases.append(TestCase(word[3] + " " + word[4], 'UCI Schema', 0, line, word[0]))
+                test_cases.append(TestCase(word[3] + " " + word[4], status=word[1], log=line))
             except:
                 continue
         
     # closing file after reading
     file_open.close()
     
-    with open('schemaCheckResults.xml', 'w', errors='ignore') as f:
-         ts = TestSuite("UCI results", test_cases)
+    with open('schemaCheckerResults.xml', 'w', errors='ignore') as f:
+         ts = TestSuite("UCI Schema Checker Results", test_cases)
          TestSuite.to_file(f, [ts])
 
     f.close()
 
     # fix bug in library
-    with open("schemaCheckResults.xml") as f:
+    with open("schemaCheckerResults.xml") as f:
         lines = f.readlines()
 
     lines[1] = "<testsuites>\n"
 
-    with open("schemaCheckResults.xml", "w") as f:
+    with open("schemaCheckerResults.xml", "w") as f:
         f.writelines(lines)
 
 
