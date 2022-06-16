@@ -32,19 +32,19 @@ try:
         if result1 in line:
             word = line.split(" ")
             try:
-                test_cases.append(TestCase(name=word[3] + " " + word[4], status=word[1], log=line))
+                test_cases.append(TestCase(name=(word[3] + " " + word[4]), status=word[0], log=line))
             except:
                 continue
         if result2 in line:
             word = line.split(" ")
             try:
-                test_cases.append(TestCase(name=word[1] + " " + word[2], status=word[0], log=line))
+                test_cases.append(TestCase(name=(word[1] + " " + word[2]), status=word[0], log=line))
             except:
                 continue
         if result3 in line:
             word = line.split(" ")
             try:
-                test_cases.append(TestCase(name=word[3] + " " + word[4], status=word[1], log=line))
+                test_cases.append(TestCase(name=(word[3] + " " + word[4]), status=word[0], log=line))
             except:
                 continue
         
